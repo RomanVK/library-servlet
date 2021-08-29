@@ -8,7 +8,7 @@
 <%--TODO make simply apearence--%>
 <html lang="${sessionScope.lang}">
 <head>
-    <title>welcome</title>
+    <title>Profile</title>
 </head>
 <body>
 <table>
@@ -19,7 +19,8 @@
                 <tr><td><%@include file='/parts/navbar.html'%></td></tr>
                 <tr><td>
                     <h2>
-                        <fmt:message key="label.welcome" />
+<%--                        TODO make i18n--%>
+                        Profile
                     </h2>
                 </td></tr>
             </table>
@@ -28,5 +29,3 @@
 </table>
 </body>
 </html>
-
-

@@ -5,22 +5,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp" >
-            <i class="fa fa-welcome" >Welcome
-            </i>
-          </a>
+<!--          TODO make working links-->
+          <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp" > Welcome </a>
         </li>
         <li >
-          <a class="nav-link" href="#" >Profile</a>
+          <a class="nav-link" href="${pageContext.request.contextPath}/WEB-INF/user/profile.jsp" >Profile</a>
         </li>
         <li >
-          <a class="nav-link" href="#" >Catalog</a>
+          <a class="nav-link" href="${pageContext.request.contextPath}/WEB-INF/user/catalog.jsp" >Catalog</a>
         </li>
         <li >
-          <a class="nav-link" href="#" >Admin</a>
+          <a class="nav-link" href="${pageContext.request.contextPath}/WEB-INF/admin/admin.jsp" >Admin</a>
         </li>
         <li >
-          <a class="nav-link" href="#" >Orders</a>
+          <a class="nav-link" href="${pageContext.request.contextPath}/WEB-INF/librarian/orders.jsp" >Orders</a>
         </li>
       </ul>
       <ul class="navbar-nav mr-auto " style="text-align: right">
@@ -58,7 +56,7 @@
       <a href="${pageContext.request.contextPath}/registration.jsp">Registration form</a>
       |
       <br>
-      <a href="${pageContext.request.contextPath}/index.jsp">Logout</a>
+      <a href="${pageContext.request.contextPath}/api/logout">Logout</a>
     </div>
   </nav>
 </div>
