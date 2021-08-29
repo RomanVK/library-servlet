@@ -6,9 +6,9 @@
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="i18n/messages"/>
 <%--TODO make simply apearence--%>
-<html lang="${sessionScope.lang}">
+<html  lang="${sessionScope.lang}">
 <head>
-    <title>welcome</title>
+    <title>Login</title>
 </head>
 <body>
 <table>
@@ -19,8 +19,15 @@
                 <tr><td><%@include file='parts/navbar.html'%></td></tr>
                 <tr><td>
                     <h2>
-                        <fmt:message key="label.welcome" />
+                        <fmt:message key="label.login" />
                     </h2>
+                </td></tr>
+                <tr><td>
+                    <form method="POST" action="${pageContext.request.contextPath}/api/login">
+                        Email:<input type="text" name="email"/><br/>
+                        Password:<input type="text" name="password" /><br/>
+                        <input type="submit" />
+                    </form>
                 </td></tr>
             </table>
         </td>
@@ -28,5 +35,3 @@
 </table>
 </body>
 </html>
-
-
