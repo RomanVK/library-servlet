@@ -1,13 +1,16 @@
 package ua.lib;
 
 import ua.lib.commands.*;
+import ua.lib.commands.admin.LibrariansCommand;
+import ua.lib.commands.librarian.OrdersCommand;
+import ua.lib.commands.librarian.UsersCommand;
+import ua.lib.commands.user.ProfileCommand;
 import ua.lib.model.services.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Servlet extends HttpServlet {
@@ -18,6 +21,11 @@ public class Servlet extends HttpServlet {
         commands.put("registration", new RegistrationCommand(new UserService()));
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("logout", new LogOutCommand());
+        commands.put("profile", new ProfileCommand());
+        commands.put("catalog", new CatalogCommand());
+        commands.put("users", new UsersCommand());
+        commands.put("orders", new OrdersCommand());
+        commands.put("librarians", new LibrariansCommand());
     }
 
     public void doGet(HttpServletRequest request,
