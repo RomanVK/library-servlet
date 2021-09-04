@@ -51,14 +51,19 @@
 <!--        >Registration-->
 <!--        </button>-->
 <!--      </form>-->
+      ||
       <br/>
       <a href="${pageContext.request.contextPath}/login.jsp">Login</a>
-      |
+      ||
       <br/>
       <a href="${pageContext.request.contextPath}/registration.jsp">Registration form</a>
-      |
+      ||
       <br>
       <a href="${pageContext.request.contextPath}/api/logout">Logout</a>
+      ||
+      &nbsp;
+      <span style="color:red">[ ${loginedUser.email} ]</span>
+      ||
     </div>
   </nav>
 </div>

@@ -6,6 +6,7 @@
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="i18n/messages"/>
 <%--TODO make simply apearence--%>
+<%--TODO make i18n--%>
 <html  lang="${sessionScope.lang}">
 <head>
     <title>Login</title>
@@ -23,7 +24,12 @@
                     </h2>
                 </td></tr>
                 <tr><td>
+                &nbsp;
+                <span style="color:red">[ ${errorMessage} ]</span>
+                </td></tr>
+                <tr><td>
                     <form method="POST" action="${pageContext.request.contextPath}/api/login">
+                        <input type="hidden" name="redirectId" value="${param.redirectId}" />
                         Email:<input type="text" name="email"/><br/>
                         Password:<input type="text" name="password" /><br/>
                         <input type="submit" />

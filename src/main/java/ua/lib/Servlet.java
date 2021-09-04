@@ -7,17 +7,23 @@ import ua.lib.commands.librarian.UsersCommand;
 import ua.lib.commands.user.ProfileCommand;
 import ua.lib.model.services.UserService;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class Servlet extends HttpServlet {
     private static final String regexPatch = ".*/api/";
     private Map<String, Command> commands = new HashMap<>();
 
-    public void init(){
+    public void init(ServletConfig servletConfig){
+
+        servletConfig.getServletContext()
+                .setAttribute("loggedUsers", new HashSet<String>());
+
         commands.put("registration", new RegistrationCommand(new UserService()));
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("logout", new LogOutCommand());
