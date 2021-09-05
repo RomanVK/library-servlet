@@ -24,6 +24,29 @@
           </h2>
         </td></tr>
       </table>
+        <p style="color: red;">${errorString}</p>
+        <table border="1" cellpadding="5" cellspacing="1" >
+          <tr>
+            <th>id</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Delete</th>
+          </tr>
+          <c:forEach items="${librarians}" var="librarian" >
+            <tr>
+              <td>${librarian.id}</td>
+              <td>${librarian.email}</td>
+              <td>${librarian.firstName}</td>
+              <td>${librarian.lastName}</td>
+              <td>
+                <a href="deleteLibrarian?id=${librarian.id}">Delete</a>
+              </td>
+            </tr>
+          </c:forEach>
+        </table>
+<%--      TODO make "creating librarian"--%>
+        <a href="createLibrarian" >Create Librarian</a>
     </td>
   </tr>
 </table>

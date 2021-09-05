@@ -9,6 +9,7 @@ import ua.lib.model.entity.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class JDBCUserDao implements UserDao {
             int i = ps.executeUpdate();
 
             if(i > 0) {
-                System.out.println("You are successfully registered");
+                System.out.println("You are successfully registered");//TODO make log
             }
         }
         catch(Exception se) {
@@ -58,7 +59,17 @@ public class JDBCUserDao implements UserDao {
 
     @Override
     public void delete(int id) {
-
+        try (PreparedStatement ps = connection.prepareStatement
+                ("delete from user where id= ?")){
+            ps.setInt(1, id);
+            int i = ps.executeUpdate();
+            if(i > 0) {
+                System.out.println("User with id " + id + " is successfully deleted");//TODO make a logging
+            }
+        }
+        catch(Exception se) {
+            throw new RuntimeException(se.getMessage());//TODO make a logging and a handling exception
+        }
     }
 
     @Override
@@ -83,5 +94,24 @@ public class JDBCUserDao implements UserDao {
         }
 
         return result;
+    }
+
+    @Override
+    public List<User> findAllLibrarians() {
+        List<User> result = new ArrayList<>();
+
+        try(PreparedStatement ps = connection.prepareStatement("SELECT * FROM user WHERE role = ?")){
+            ps.setString( 1, "LIBRARIAN");
+            ResultSet rs;
+            rs = ps.executeQuery();
+            UserMapper mapper = new UserMapper();
+            while (rs.next()){
+                User user = mapper.extractFromResultSet(rs);
+                result.add(user);
+            }
+            return result;
+        }catch (Exception ex){
+            throw new RuntimeException(ex.getMessage());//TODO make a logging  and a handling exception
+        }
     }
 }
