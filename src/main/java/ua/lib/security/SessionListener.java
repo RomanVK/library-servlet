@@ -1,5 +1,7 @@
 package ua.lib.security;
 
+import ua.lib.model.entity.User;
+
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.HashSet;
@@ -15,8 +17,9 @@ public class SessionListener implements HttpSessionListener {
         HashSet<String> loggedUsers = (HashSet<String>) httpSessionEvent
                 .getSession().getServletContext()
                 .getAttribute("loggedUsers");
-        String email = (String) httpSessionEvent.getSession().getServletContext()
-                .getAttribute("email");
+        User loginedUser = (User) httpSessionEvent.getSession()
+                .getAttribute("loginedUser");
+        String email = loginedUser.getEmail();
         loggedUsers.remove(email);
         httpSessionEvent.getSession().setAttribute("loggedUsers", loggedUsers);
     }

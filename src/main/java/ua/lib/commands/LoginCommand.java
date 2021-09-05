@@ -20,6 +20,8 @@ public class LoginCommand implements Command {
         String password = request.getParameter("password");
         String errorMessage = "error";
 
+        CommandUtility.removeCurrentLoginedUserFromContext(request);
+
         //TODO make better validation for email and password
         if (email == null || email.equals("") || password == null || password.equals("")) {
             errorMessage = "Please input your email and password";

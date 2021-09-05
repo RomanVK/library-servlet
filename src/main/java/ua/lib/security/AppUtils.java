@@ -15,8 +15,6 @@ public class AppUtils {
     private static final Map<String, Integer> uri_id_map = new HashMap<>();
 
     public static void storeLoginedUser(HttpSession session, User loginedUser) {
-        ServletContext context = session.getServletContext();
-        context.setAttribute("email", loginedUser.getEmail());
         session.setAttribute("loginedUser", loginedUser);
     }
 
@@ -32,7 +30,6 @@ public class AppUtils {
             id = REDIRECT_ID++;
             uri_id_map.put(requestUri, id);
             id_uri_map.put(id, requestUri);
-            System.out.println(id_uri_map);//todo delete
             return id;
         }
         return id;
