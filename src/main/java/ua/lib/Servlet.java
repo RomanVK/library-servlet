@@ -1,6 +1,7 @@
 package ua.lib;
 
 import ua.lib.commands.*;
+import ua.lib.commands.admin.CreateLibrarianCommand;
 import ua.lib.commands.admin.DeleteLibrarianCommand;
 import ua.lib.commands.admin.LibrariansCommand;
 import ua.lib.commands.librarian.OrdersCommand;
@@ -34,6 +35,7 @@ public class Servlet extends HttpServlet {
         commands.put("orders", new OrdersCommand());
         commands.put("librarians", new LibrariansCommand(new UserService()));
         commands.put("deleteLibrarian", new DeleteLibrarianCommand(new UserService()));
+        commands.put("createLibrarian", new CreateLibrarianCommand(new UserService()));
     }
 
     public void doGet(HttpServletRequest request,

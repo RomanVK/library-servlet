@@ -28,13 +28,13 @@ public class JDBCUserDao implements UserDao {
             ps.setString(1, entity.getEmail());
             ps.setString(2, entity.getFirstName());
             ps.setString(3, entity.getLastName());
-            ps.setString(4, RoleType.USER.toString());
+            ps.setString(4, entity.getRole().toString());
             ps.setString(5, entity.getPassword());
 
             int i = ps.executeUpdate();
 
             if(i > 0) {
-                System.out.println("You are successfully registered");//TODO make log
+                System.out.println(entity + " are successfully registered");//TODO make log
             }
         }
         catch(Exception se) {

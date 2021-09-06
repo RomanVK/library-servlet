@@ -45,7 +45,6 @@
             </tr>
           </c:forEach>
         </table>
-<%--      TODO make "creating librarian"--%>
         <a href="createLibrarian" >Create Librarian</a>
     </td>
   </tr>

@@ -20,6 +20,8 @@ public class SecurityConfig {
         AdminUrlPatterns.add("/api/profile");
         AdminUrlPatterns.add("/api/users");
         AdminUrlPatterns.add("/api/librarians");
+        AdminUrlPatterns.add("/api/createLibrarian");
+        AdminUrlPatterns.add("/api/deleteLibrarian");
 
         mapConfig.put(RoleType.ADMIN.toString(), AdminUrlPatterns);
 
