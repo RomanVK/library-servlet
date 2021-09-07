@@ -17,11 +17,12 @@ public class SecurityConfig {
     private static void init() {
         List<String> AdminUrlPatterns = new ArrayList<>();
 
-        AdminUrlPatterns.add("/api/profile");
         AdminUrlPatterns.add("/api/users");
         AdminUrlPatterns.add("/api/librarians");
         AdminUrlPatterns.add("/api/createLibrarian");
         AdminUrlPatterns.add("/api/deleteLibrarian");
+        AdminUrlPatterns.add("/api/blockLibrarian");
+        AdminUrlPatterns.add("/api/unblockLibrarian");
 
         mapConfig.put(RoleType.ADMIN.toString(), AdminUrlPatterns);
 
