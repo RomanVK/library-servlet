@@ -7,18 +7,20 @@ public class User {
     private String email;
     private RoleType role;
     private String password;
+    private boolean blocked;
 
     public User(){
 
     }
 
-    public User(Long id, String firstName, String lastName, String email, RoleType role, String password) {
+    public User(Long id, String firstName, String lastName, String email, RoleType role, String password, boolean blocked ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.role = role;
         this.password = password;
+        this.blocked = blocked;
     }
 
     public Long getId() {
@@ -69,6 +71,15 @@ public class User {
         this.password = password;
     }
 
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
@@ -78,6 +89,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", role=" + role +
                 ", password='" + password + '\'' +
+                ", userNonBlocked='" + blocked + '\'' +
                 '}';
     }
 }

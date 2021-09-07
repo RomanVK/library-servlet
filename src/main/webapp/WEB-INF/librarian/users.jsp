@@ -22,7 +22,50 @@
             <%--                        TODO make i18n--%>
             Users
           </h2>
-        </td></tr>
+      </table>
+      <p style="color: red;">${errorString}</p>
+      <table border="1" cellpadding="5" cellspacing="1" >
+        <tr>
+          <th>id</th>
+          <th>Email</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <c:if test="${roleLoginedUser.equals('ADMIN')}">
+              <th>
+                BLOCK/ UNBLOCK
+              </th>
+          </c:if>
+          <c:if test="${roleLoginedUser.equals('LIBRARIAN')}">
+            <th>
+                SEE PROFILE
+            </th>
+          </c:if>
+        </tr>
+        <c:forEach items="${users}" var="user" >
+          <tr>
+            <td>${user.id}</td>
+            <td>${user.email}</td>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <c:if test="${roleLoginedUser.equals('ADMIN')}">
+              <td>
+                <c:choose>
+                  <c:when test="${user.blocked==true}">
+                    <a href="unblockUser?id=${user.id}">UNBLOCK</a>
+                  </c:when>
+                  <c:otherwise>
+                    <a href="blockUser?id=${user.id}">BLOCK</a>
+                  </c:otherwise>
+                </c:choose>
+              </td>
+            </c:if>
+            <c:if test="${roleLoginedUser.equals('LIBRARIAN')}">
+              <td>
+                <a href="userProfile?id=${user.id}">SEE PROFILE</a>
+              </td>
+            </c:if>
+          </tr>
+        </c:forEach>
       </table>
     </td>
   </tr>

@@ -114,4 +114,54 @@ public class JDBCUserDao implements UserDao {
             throw new RuntimeException(ex.getMessage());//TODO make a logging  and a handling exception
         }
     }
+
+    @Override
+    public List<User> findAllUsers() {
+
+        List<User> result = new ArrayList<>();
+
+        try(PreparedStatement ps = connection.prepareStatement("SELECT * FROM user WHERE role = ?")){
+            ps.setString( 1, "USER");
+            ResultSet rs;
+            rs = ps.executeQuery();
+            UserMapper mapper = new UserMapper();
+            while (rs.next()){
+                User user = mapper.extractFromResultSet(rs);
+                result.add(user);
+            }
+            return result;
+        }catch (Exception ex){
+            throw new RuntimeException(ex.getMessage());//TODO make a logging  and a handling exception
+        }
+    }
+
+    @Override
+    public void block(int id) {
+        try (PreparedStatement ps = connection.prepareStatement
+                ("update user set blocked=1 where id= ?")){
+            ps.setInt(1, id);
+            int i = ps.executeUpdate();
+            if(i > 0) {
+                System.out.println("User with id =" + id + " is successfully blocked");//TODO make a logging
+            }
+        }
+        catch(Exception se) {
+            throw new RuntimeException(se.getMessage());//TODO make a logging and a handling exception
+        }
+    }
+
+    @Override
+    public void unblock(int id) {
+        try (PreparedStatement ps = connection.prepareStatement
+                ("update user set blocked=0 where id= ?")){
+            ps.setInt(1, id);
+            int i = ps.executeUpdate();
+            if(i > 0) {
+                System.out.println("User with id =" + id + " is successfully unblocked");//TODO make a logging
+            }
+        }
+        catch(Exception se) {
+            throw new RuntimeException(se.getMessage());//TODO make a logging and a handling exception
+        }
+    }
 }

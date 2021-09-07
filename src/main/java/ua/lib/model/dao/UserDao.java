@@ -10,4 +10,10 @@ public interface UserDao extends GenericDao<User>{
     Optional<User> findByEmail(String email);
 
     List<User> findAllLibrarians();
+
+    List<User> findAllUsers();
+
+    void block(int id);
+
+    void unblock(int id);
 }

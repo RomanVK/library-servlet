@@ -29,7 +29,8 @@ public class RegistrationCommand implements Command  {
                             request.getParameter("last_name"),
                             request.getParameter("email"),
                             RoleType.USER,
-                            request.getParameter("password")
+                            request.getParameter("password"),
+                            false
                     )
             );
         } catch(RuntimeException re) {

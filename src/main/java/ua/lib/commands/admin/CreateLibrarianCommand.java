@@ -35,7 +35,8 @@ public class CreateLibrarianCommand implements Command  {
                             request.getParameter("last_name"),
                             request.getParameter("email"),
                             RoleType.LIBRARIAN,
-                            request.getParameter("password")
+                            request.getParameter("password"),
+                            false
                     )
             );
         } catch(RuntimeException re) {

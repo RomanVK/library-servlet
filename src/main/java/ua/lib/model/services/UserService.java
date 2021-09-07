@@ -37,4 +37,25 @@ public class UserService{
             dao.delete(id);
         }
     }
+
+    public List<User> getAllUsers(){
+        List<User> result;
+        try(UserDao dao = daoFactory.createUserDao()){
+            result = dao.findAllUsers();
+        }
+        return result;
+    }
+
+    public void block(int id){
+        try(UserDao dao = daoFactory.createUserDao()){
+            dao.block(id);
+        }
+    }
+
+    public void unblock(int id){
+        try(UserDao dao = daoFactory.createUserDao()){
+            dao.unblock(id);
+        }
+    }
+
 }

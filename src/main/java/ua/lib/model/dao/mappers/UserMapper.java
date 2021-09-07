@@ -17,6 +17,7 @@ public class UserMapper implements ObjectMapper<User>{
         user.setEmail(rs.getString("email"));
         user.setRole(RoleType.valueOf(rs.getString("role")));
         user.setPassword(rs.getString("password"));//TODO make encrypted password
+        user.setBlocked(rs.getBoolean("blocked"));
         return user;
     }
 
