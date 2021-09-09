@@ -58,4 +58,13 @@ public class UserService{
         }
     }
 
+    public Optional<User> getById(int id){
+        Optional<User> result;
+        try(UserDao dao = daoFactory.createUserDao()){
+            result = dao.findById(id);
+        }
+        return result;
+    }
+
+
 }

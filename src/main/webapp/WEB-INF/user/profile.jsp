@@ -23,6 +23,34 @@
                         Profile
                     </h2>
                 </td></tr>
+
+                <tr><td>
+                    Hello ${user.firstName} ${user.lastName}
+                </td></tr>
+                <tr><td>
+                    Registration data
+                </td></tr>
+                <tr>
+                    <td> ID </td> <td> ${user.id} </td>
+                </tr>
+                <tr>
+                    <td> First name </td> <td> ${user.firstName} </td>
+                </tr>
+                <tr>
+                    <td> Last name </td> <td> ${user.lastName} </td>
+                </tr>
+                <tr>
+                    <td> Email </td> <td> ${user.email} </td>
+                </tr>
+                <tr>
+                    <td> Lock status </td> <td> ${user.blocked} </td>
+                </tr>
+                <tr><td>
+                    Ordered books---------------
+                </td></tr>
+                <tr><td>
+                    Received books--------------
+                </td></tr>
             </table>
         </td>
     </tr>

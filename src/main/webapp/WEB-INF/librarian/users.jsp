@@ -61,7 +61,7 @@
             </c:if>
             <c:if test="${roleLoginedUser.equals('LIBRARIAN')}">
               <td>
-                <a href="userProfile?id=${user.id}">SEE PROFILE</a>
+                <a href="profile?id=${user.id}">SEE PROFILE</a>
               </td>
             </c:if>
           </tr>

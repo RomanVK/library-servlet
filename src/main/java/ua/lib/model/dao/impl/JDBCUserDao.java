@@ -43,8 +43,22 @@ public class JDBCUserDao implements UserDao {
     }
 
     @Override
-    public User findById(String email) {
-        return null;
+    public Optional<User> findById(int id) {
+        Optional<User> result = Optional.empty();
+
+        try(PreparedStatement ps = connection.prepareStatement("SELECT * FROM user WHERE id = ?")){
+            ps.setInt( 1, id);
+            ResultSet rs;
+            rs = ps.executeQuery();
+            UserMapper mapper = new UserMapper();
+            if (rs.next()){
+                result = Optional.of(mapper.extractFromResultSet(rs));
+            }
+        }catch (Exception ex){
+            throw new RuntimeException(ex);//TODO make a logging
+        }
+
+        return result;
     }
 
     @Override
