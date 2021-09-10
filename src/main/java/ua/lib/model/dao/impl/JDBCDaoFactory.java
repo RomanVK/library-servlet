@@ -1,5 +1,6 @@
 package ua.lib.model.dao.impl;
 
+import ua.lib.model.dao.BookDao;
 import ua.lib.model.dao.DaoFactory;
 import ua.lib.model.dao.UserDao;
 
@@ -15,7 +16,12 @@ public class JDBCDaoFactory extends DaoFactory {
         return new JDBCUserDao(getConnection());
     }
 
-    private Connection getConnection(){
+    @Override
+    public BookDao createBookDao() {
+        return new JDBCBookDao(getConnection());
+    }
+
+    private Connection getConnection() {
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {

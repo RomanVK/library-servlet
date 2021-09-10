@@ -5,7 +5,10 @@ import ua.lib.commands.admin.*;
 import ua.lib.commands.librarian.OrdersCommand;
 import ua.lib.commands.librarian.UsersCommand;
 import ua.lib.commands.user.ProfileCommand;
+import ua.lib.model.entity.RoleType;
+import ua.lib.model.services.BookService;
 import ua.lib.model.services.UserService;
+import ua.lib.security.AppUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -28,7 +31,7 @@ public class Servlet extends HttpServlet {
         commands.put("login", new LoginCommand(new UserService()));
         commands.put("logout", new LogOutCommand());
         commands.put("profile", new ProfileCommand(new UserService()));
-        commands.put("catalog", new CatalogCommand());
+        commands.put("catalog", new CatalogCommand(new BookService()));
         commands.put("users", new UsersCommand(new UserService()));
         commands.put("orders", new OrdersCommand());
         commands.put("librarians", new LibrariansCommand(new UserService()));
